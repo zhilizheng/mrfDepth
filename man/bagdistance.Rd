@@ -2,7 +2,7 @@
 \alias{bagdistance}
 \title{Bagdistance of points relative to a dataset}
 \description{
-Computes the bagdistance of \eqn{p}-dimensional points \code{z} relative to a \eqn{p}-dimensional dataset \code{x}. To compute the bagdistance of a point \eqn{z_i} the bag of \code{x} which is defined as as the depth region containing the 50\% observations with largest depth. has tp be cumputed first.  Next, The ray from the halfspace median \eqn{\theta} through \eqn{z_i} is considered and \eqn{c_z} is defined as the intersection of this ray and the boundary of the bag. The bagdistance of \eqn{z_i} to \code{x} is then given by the ratio between
+Computes the bagdistance of \eqn{p}-dimensional points \code{z} relative to a \eqn{p}-dimensional dataset \code{x}. To compute the bagdistance of a point \eqn{z_i} the bag of \code{x} which is defined as the depth region containing the 50\% observations with largest depth. Next, the ray from the halfspace median \eqn{\theta} through \eqn{z_i} is considered and \eqn{c_z} is defined as the intersection of this ray and the boundary of the bag. The bagdistance of \eqn{z_i} to \code{x} is then given by the ratio between
 the Euclidean distance of \eqn{z_i} to the halfspace median and the Euclidean distance of \eqn{c_z} to the halfspace median.
 }
 \usage{

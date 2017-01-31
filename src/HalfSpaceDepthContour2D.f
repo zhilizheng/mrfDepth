@@ -42,7 +42,7 @@ C
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 C Declaration of Variables
 C INPUT
-      INTEGER N,K
+      INTEGER N, K
       DOUBLE PRECISION X(N),Y(N),XX(N),YY(N)
       DOUBLE PRECISION EPS
 
@@ -84,7 +84,7 @@ C
 2     CONTINUE
       xmean=xmean/n
       ymean=ymean/n
-      DO 3 I=1,N2
+      DO 3 I=1,N
          xdev=xdev+((xx(i)-xmean)*(xx(i)-xmean))
          ydev=ydev+((yy(i)-ymean)*(yy(i)-ymean))
 3     continue
@@ -220,15 +220,15 @@ C  Compute all the angles formed by pairs of data points.
       L=1
       DO 20 I=1,N
       DO 25 J=I+1,N
-	    IF (X(I).EQ.X(J)) THEN
-	       ANGLE(L)=PI2
+      IF (X(I).EQ.X(J)) THEN
+         ANGLE(L)=PI2
             ELSE
-	       ANGLE(L)=DATAN((Y(I)-Y(J))/(X(I)-X(J)))
-	       IF (ANGLE(L).le.0.0) ANGLE(L)=ANGLE(L)+PI
+         ANGLE(L)=DATAN((Y(I)-Y(J))/(X(I)-X(J)))
+         IF (ANGLE(L).le.0.0) ANGLE(L)=ANGLE(L)+PI
             ENDIF
-	    IND1(L)=I
-	    IND2(L)=J
-	    L=L+1
+      IND1(L)=I
+      IND2(L)=J
+      L=L+1
 25    CONTINUE
 20    CONTINUE
 C  Sort all the angles and permute IND1 and IND2 in the same way.
@@ -239,21 +239,21 @@ C  Test whether any three points are collinear
       LEFT=1
 30    ANG1=ANGLE(LEFT)
       DO 35 J=LEFT+1,M
-	 IF (ANGLE(J).GT.ANG1) THEN
-	    LEFT=J
-	    GOTO 30
+      IF (ANGLE(J).GT.ANG1) THEN
+      LEFT=J
+      GOTO 30
          ELSE
             DO 36 I=LEFT,J-1
                IF ((IND1(I).EQ.IND1(J)).or.
-     +	          (IND1(I).EQ.IND2(J))) THEN
+     +            (IND1(I).EQ.IND2(J))) THEN
 C The data are not in general position:' The points',IND1(J),', ',IND2(J),' and ',IND2(I),' are collinear.'
-	       GOTO 210
-	       ENDIF
-	       IF ((IND2(I).EQ.IND1(J)).or.
+         GOTO 210
+         ENDIF
+         IF ((IND2(I).EQ.IND1(J)).or.
      +            (IND2(I).EQ.IND2(J))) THEN
 C The data are not in general position:' The points',IND1(J),', ',IND2(J),' and ',IND1(I),' are collinear.'
-	       GOTO 210
-	       ENDIF
+         GOTO 210
+         ENDIF
 36          CONTINUE
          ENDIF
 35    CONTINUE
@@ -332,11 +332,11 @@ C
 C  (Re)initialize NCIRQ and NRANK
 C
       DO 45 I=1,N
-	   NCIRQ(I)=MCIRQ(I)
+      NCIRQ(I)=MCIRQ(I)
 45    CONTINUE
       DO 50 I=1,N
-	   IV=NCIRQ(I)
-	   NRANK(IV)=I
+      IV=NCIRQ(I)
+      NRANK(IV)=I
 50    CONTINUE
 C
 C  Let the line rotate from zero to ANGLE(1)
@@ -345,8 +345,8 @@ C
       HALT=0
       if (angle(1).gt.pi2) then
          L=1
-	   CALL ADJUST(IND1,IND2,L,NRANK,NCIRQ,KOUNT,ALPHA,ANGLE,
-     +	                  K,N,M,MAXNUM,KAND1,KAND2,D,X,Y)
+      CALL ADJUST(IND1,IND2,L,NRANK,NCIRQ,KOUNT,ALPHA,ANGLE,
+     +                    K,N,M,MAXNUM,KAND1,KAND2,D,X,Y)
          halt=1
       endif
       L=2
@@ -354,9 +354,9 @@ C
 C Check if line 2 is perpendicular to a projectionline with
 C angle between 0 and angle(1)
       IF ((PI.LE.(ANGLE(L)+PI2)).AND.((ANGLE(L)-PI2).LT.ANGLE(1))) THEN
-	   CALL ADJUST(IND1,IND2,L,NRANK,NCIRQ,KOUNT,ALPHA,ANGLE,
-     +	                  K,N,M,MAXNUM,KAND1,KAND2,D,X,Y)
-	   KONTROL=1
+      CALL ADJUST(IND1,IND2,L,NRANK,NCIRQ,KOUNT,ALPHA,ANGLE,
+     +                    K,N,M,MAXNUM,KAND1,KAND2,D,X,Y)
+      KONTROL=1
       ENDIF
       L=L+1
       IF (KONTROL.EQ.1) HALT=1
@@ -387,10 +387,10 @@ C
          L=J+1
          if (l.eq.m+1) l=1
  75      KONTROL=0
-	 IF ((ANGLE(L)+PI2).LT.PI) THEN
-	    ANG1=ANGLE(L)+PI2
+      IF ((ANGLE(L)+PI2).LT.PI) THEN
+      ANG1=ANGLE(L)+PI2
          ELSE
-	    ANG1=ANGLE(L)-PI2
+      ANG1=ANGLE(L)-PI2
          ENDIF
          if (j.eq.m) then
             jj=1
@@ -400,29 +400,29 @@ C
          endif
        IF ((ANGLE(J).LE.ANG1).AND.(ANG1.LT.ANGLE(jj))) THEN
          if (angle(1).gt.pi) angle(1)=angle(1)-pi
-	    CALL ADJUST(IND1,IND2,L,NRANK,NCIRQ,KOUNT,ALPHA,ANGLE,
+      CALL ADJUST(IND1,IND2,L,NRANK,NCIRQ,KOUNT,ALPHA,ANGLE,
      +                       K,N,M,MAXNUM,KAND1,KAND2,D,X,Y)
-	    KONTROL=1
+      KONTROL=1
          ENDIF
          if (angle(1).gt.pi) angle(1)=angle(1)-pi
-	 IF (L.NE.M) THEN
-	    L=L+1
+      IF (L.NE.M) THEN
+      L=L+1
          ELSE
-	    L=1
+      L=1
          ENDIF
-	 IF (KONTROL.EQ.1) HALT=1
-	 IF ((HALT.EQ.1).AND.(KONTROL.EQ.0)) THEN
+      IF (KONTROL.EQ.1) HALT=1
+      IF ((HALT.EQ.1).AND.(KONTROL.EQ.0)) THEN
             if (halt2.eq.1) goto 101
             if (l.gt.1) then
             JFLAG=L-1
             else
             jflag=m
             endif
-	    GOTO 79
+      GOTO 79
          ELSE
             IF (L.EQ.jj) THEN
                if (jj.eq.1) halt2=1
-	       GOTO 73
+         GOTO 73
             ELSE
                GOTO 75
             ENDIF
@@ -433,27 +433,27 @@ C  The first switch has occurred. Now start looking for the next ones,
 C  between the following angles.
 C
 79    DO 80 I=J+1,M-1
-	 L=JFLAG
+      L=JFLAG
 90      KONTROL=0
-	 IF ((ANGLE(L)+PI2).LT.PI) THEN
-	    ANG1=ANGLE(L)+PI2
+      IF ((ANGLE(L)+PI2).LT.PI) THEN
+      ANG1=ANGLE(L)+PI2
          ELSE
-	    ANG1=ANGLE(L)-PI2
+      ANG1=ANGLE(L)-PI2
          ENDIF
-	 IF ((ANGLE(I).LE.ANG1).AND.(ANG1.LT.ANGLE(I+1))) THEN
-	    CALL ADJUST(IND1,IND2,L,NRANK,NCIRQ,KOUNT,ALPHA,
+      IF ((ANGLE(I).LE.ANG1).AND.(ANG1.LT.ANGLE(I+1))) THEN
+      CALL ADJUST(IND1,IND2,L,NRANK,NCIRQ,KOUNT,ALPHA,
      +                  ANGLE,K,N,M,MAXNUM,KAND1,KAND2,D,X,Y)
-	    KONTROL=1
+      KONTROL=1
          ENDIF
-	 IF (KONTROL.EQ.0) THEN
-	    JFLAG=L
+      IF (KONTROL.EQ.0) THEN
+      JFLAG=L
          ELSE
-	    IF (L.NE.M) THEN
-	       L=L+1
+      IF (L.NE.M) THEN
+         L=L+1
             ELSE
-	       L=1
+         L=1
             ENDIF
-	    GOTO 90
+      GOTO 90
          ENDIF
  80   CONTINUE
       L=JFLAG
@@ -462,20 +462,20 @@ C  Finally, look for necessary switches between the last angle and zero.
 C
 100   KONTROL=0
       IF ((ANGLE(L)+PI2).LT.PI) THEN
-	 ANG1=ANGLE(L)+PI2
+      ANG1=ANGLE(L)+PI2
       ELSE
-	 ANG1=ANGLE(L)-PI2
+      ANG1=ANGLE(L)-PI2
       ENDIF
       IF ((ANGLE(M).LE.ANG1).AND.(ANG1.LT.PI)) THEN
-	 CALL ADJUST(IND1,IND2,L,NRANK,NCIRQ,KOUNT,ALPHA,
+      CALL ADJUST(IND1,IND2,L,NRANK,NCIRQ,KOUNT,ALPHA,
      +               ANGLE,K,N,M,MAXNUM,KAND1,KAND2,D,X,Y)
-	 KONTROL=1
+      KONTROL=1
       ENDIF
       IF (KONTROL.EQ.1) THEN
          IF (L.NE.M) THEN
-	     L=L+1
+       L=L+1
          ELSE
-	     L=1
+       L=1
          ENDIF
          GOTO 100
       ENDIF
@@ -496,9 +496,9 @@ C  Compute the intersection point.
 C
       IF (DABS(-DSIN(ALPHA(IW2))*DCOS(ALPHA(IW1))
      +         +DSIN(ALPHA(IW1))*DCOS(ALPHA(IW2))).LT.EPS) THEN
-	 IW2=IW2+1
-	 IF (IW2.EQ.NUM+1) IW2=1
-	 GOTO 120
+      IW2=IW2+1
+      IF (IW2.EQ.NUM+1) IW2=1
+      GOTO 120
       ENDIF
       XCORD=(DCOS(ALPHA(IW2))*D(IW1)-DCOS(ALPHA(IW1))*D(IW2))
      + /(-DSIN(ALPHA(IW2))*DCOS(ALPHA(IW1))
@@ -519,12 +519,12 @@ C
         iv=0
 125       NEXT=IW2+1
             iv=iv+1
-	  IF (NEXT.EQ.(NUM+1)) NEXT=1
+      IF (NEXT.EQ.(NUM+1)) NEXT=1
           if (next.ne.iw1) then
           IF ((NDATA.EQ.KAND1(NEXT)).OR.(NDATA.EQ.KAND2(NEXT))) THEN
-	    IW2=IW2+1
-	    IF (IW2.EQ.(NUM+1)) IW2=1
-	    GOTO 125
+      IW2=IW2+1
+      IF (IW2.EQ.(NUM+1)) IW2=1
+      GOTO 125
           ENDIF
           endif
              if (iv.eq.(num-1)) then
@@ -538,9 +538,9 @@ C
              endif
       ENDIF
       IF (IW2.EQ.NUM) THEN
-	 KON=1
+      KON=1
       ELSE
-	 KON=IW2+1
+      KON=IW2+1
       ENDIF
        if (kon.eq.iw1) kon=kon+1
        if (kon.eq.num+1) kon=1
@@ -557,13 +557,13 @@ C
       IF (HDEP1.EQ.K) NDK=1
       IF (HDEP1.NE.K) THEN
       CALL HSDEP21(XCORD-EPS*10,YCORD-EPS*10,N,X,Y,BETA,F,DPF,
-     +				 JLV,JRV,HDEP2,SDEP)
+     +         JLV,JRV,HDEP2,SDEP)
       CALL HSDEP21(XCORD+EPS*10,YCORD+EPS*10,N,X,Y,BETA,F,DPF,
-     +				 JLV,JRV,HDEP3,SDEP)
+     +         JLV,JRV,HDEP3,SDEP)
       CALL HSDEP21(XCORD-EPS*10,YCORD+EPS*10,N,X,Y,BETA,F,DPF,
-     +				 JLV,JRV,HDEP4,SDEP)
+     +         JLV,JRV,HDEP4,SDEP)
       CALL HSDEP21(XCORD+EPS*10,YCORD-EPS*10,N,X,Y,BETA,F,DPF,
-     +				 JLV,JRV,HDEP5,SDEP)
+     +         JLV,JRV,HDEP5,SDEP)
 
       IF ((NDK.EQ.0).AND.
      +    ((HDEP1.ge.K).OR.(HDEP2.ge.K).OR.(HDEP3.ge.K)
@@ -577,29 +577,29 @@ C
 C  The intersection point is not the correct one,
 C  try the next special k-divider.
 C
-	 IW2=IW2+1
-	 IF (IW2.EQ.(NUM+1)) IW2=1
-	 GOTO 120
+      IW2=IW2+1
+      IF (IW2.EQ.(NUM+1)) IW2=1
+      GOTO 120
       ENDIF
       ENDIF
 C
 C  Store IW1 and IW2 in KORNR. If KORNR has already been filled, check whether
 C  we have encountered this intersection point before.
 C
-	 IF ((IW2.GT.IW1).AND.(JFULL.EQ.0)) THEN
-	    DO 130 I=IW1,IW2-1
-	       KORNR(I,1)=KAND1(IW1)
-	       KORNR(I,2)=KAND2(IW1)
-	       KORNR(I,3)=KAND1(IW2)
-	       KORNR(I,4)=KAND2(IW2)
+      IF ((IW2.GT.IW1).AND.(JFULL.EQ.0)) THEN
+      DO 130 I=IW1,IW2-1
+         KORNR(I,1)=KAND1(IW1)
+         KORNR(I,2)=KAND2(IW1)
+         KORNR(I,3)=KAND1(IW2)
+         KORNR(I,4)=KAND2(IW2)
 130         CONTINUE
-	 ELSE
-	    IF (IW2.GT.IW1) THEN
-	       DO 140 I=IW1,IW2-1
-	  IF ((KORNR(I,1).EQ.KAND1(IW1)).AND.(KORNR(I,2).EQ.KAND2(IW1))
+      ELSE
+      IF (IW2.GT.IW1) THEN
+         DO 140 I=IW1,IW2-1
+      IF ((KORNR(I,1).EQ.KAND1(IW1)).AND.(KORNR(I,2).EQ.KAND2(IW1))
      +   .AND.(KORNR(I,3).EQ.KAND1(IW2)).AND.(KORNR(I,4).EQ.KAND2(IW2)))
      +    THEN
-		  GOTO 170
+      GOTO 170
              ELSE
       m1=(y(kornr(i,2))-y(kornr(i,1)))/(x(kornr(i,2))-x(kornr(i,1)))
       m2=(y(kornr(i,4))-y(kornr(i,3)))/(x(kornr(i,4))-x(kornr(i,3)))
@@ -614,25 +614,25 @@ C
                goto 170
                endif
 
-		  KORNR(I,1)=KAND1(IW1)
-		  KORNR(I,2)=KAND2(IW1)
-		  KORNR(I,3)=KAND1(IW2)
-		  KORNR(I,4)=KAND2(IW2)
+      KORNR(I,1)=KAND1(IW1)
+      KORNR(I,2)=KAND2(IW1)
+      KORNR(I,3)=KAND1(IW2)
+      KORNR(I,4)=KAND2(IW2)
              ENDIF
 140            CONTINUE
-	    ELSE
-	       JFULL=1
-	       DO 150 I=IW1,NUM
-		  KORNR(I,1)=KAND1(IW1)
-		  KORNR(I,2)=KAND2(IW1)
-		  KORNR(I,3)=KAND1(IW2)
-		  KORNR(I,4)=KAND2(IW2)
+      ELSE
+         JFULL=1
+         DO 150 I=IW1,NUM
+      KORNR(I,1)=KAND1(IW1)
+      KORNR(I,2)=KAND2(IW1)
+      KORNR(I,3)=KAND1(IW2)
+      KORNR(I,4)=KAND2(IW2)
 150            CONTINUE
-	       DO 160 I=1,IW2-1
-	     IF ((KORNR(I,1).EQ.KAND1(IW1)).AND.(KORNR(I,2).EQ.KAND2(IW1))
+         DO 160 I=1,IW2-1
+       IF ((KORNR(I,1).EQ.KAND1(IW1)).AND.(KORNR(I,2).EQ.KAND2(IW1))
      +  .AND.(KORNR(I,3).EQ.KAND1(IW2)).AND.(KORNR(I,4).EQ.KAND2(IW2)))
      +       THEN
-		  GOTO 170
+      GOTO 170
              ELSE
       m1=(y(kornr(i,2))-y(kornr(i,1)))/(x(kornr(i,2))-x(kornr(i,1)))
       m2=(y(kornr(i,4))-y(kornr(i,3)))/(x(kornr(i,4))-x(kornr(i,3)))
@@ -647,22 +647,22 @@ C
                goto 170
                endif
 
-		  KORNR(I,1)=KAND1(IW1)
-		  KORNR(I,2)=KAND2(IW1)
-		  KORNR(I,3)=KAND1(IW2)
-		  KORNR(I,4)=KAND2(IW2)
+      KORNR(I,1)=KAND1(IW1)
+      KORNR(I,2)=KAND2(IW1)
+      KORNR(I,3)=KAND1(IW2)
+      KORNR(I,4)=KAND2(IW2)
              ENDIF
 160            CONTINUE
-	    ENDIF
+      ENDIF
          ENDIF
       ELSE
 C
 C  The intersection point is not the correct one,
 C  try the next special k-divider.
 C
-	 IW2=IW2+1
-	 IF (IW2.EQ.(NUM+1)) IW2=1
-	 GOTO 120
+      IW2=IW2+1
+      IF (IW2.EQ.(NUM+1)) IW2=1
+      GOTO 120
       ENDIF
 C
 C  Look for the next vertex of the convex figure.
@@ -739,12 +739,12 @@ C Actual Routine
 190   IF ((KORNR(I,1).EQ.KORNR(I-1,1)).AND.(KORNR(I,2).EQ.KORNR(I-1,2))
      +.AND.(KORNR(I,3).EQ.KORNR(I-1,3).AND.KORNR(I,4).EQ.KORNR(I-1,4)))
      +THEN
-	I=I+1
+      I=I+1
       ELSE
         IF ((KORNR(I,1).EQ.KORNR(1,1)).AND.(KORNR(I,2).EQ.KORNR(1,2))
      +    .AND.(KORNR(I,3).EQ.KORNR(1,3).AND.KORNR(I,4).EQ.KORNR(1,4)))
-     +	THEN
-	  GOTO 200
+     +  THEN
+      GOTO 200
         ELSE
           E1=Y(KORNR(I,2))-Y(KORNR(I,1))
           F1=X(KORNR(I,1))-X(KORNR(I,2))
@@ -765,9 +765,9 @@ C Actual Routine
              xcordp=xcord
              ycordp=ycord
              KOUNT=KOUNT+1
-	       XCont(KOUNT)=XCORD
+         XCont(KOUNT)=XCORD
              YCont(KOUNT)=YCORD
-	       I=I+1
+         I=I+1
           endif
         call HSDEP21(xcord,ycord,n,x,y,
      +               beta,f,dpf,jlv,jrv,hdep1,SDEP)

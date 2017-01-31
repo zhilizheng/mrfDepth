@@ -27,6 +27,13 @@ export(symtest)
 export(compBagplot)
 export(bagdistance)
 
+export(rdepth)
+#export(catline)
+export(rdepthmedian)
+export(cmltest)
+
+
 export(mrainbowplot)
 export(plotContours)
 export(bagplot)
+
