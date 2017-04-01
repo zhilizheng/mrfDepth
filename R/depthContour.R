@@ -1,4 +1,4 @@
-depthContour <- function(x, alpha=NULL, type="hdepth", directions=NULL,
+depthContour <- function(x, alpha = NULL, type = "hdepth", directions = NULL,
                          options=NULL){
 
   ######
@@ -17,9 +17,6 @@ depthContour <- function(x, alpha=NULL, type="hdepth", directions=NULL,
   }
   n <- nrow(x)
   p <- ncol(x)
-  if (p < 2) {
-    stop("The data matrix x should be at least two dimensional.")
-  }
   if (n < (p + 1)) {
     stop("The number of observations should be larger than the number
          of variables + 1.")
@@ -53,6 +50,9 @@ depthContour <- function(x, alpha=NULL, type="hdepth", directions=NULL,
       set.seed(123)
       NDirections <- 250 * p
       directions <- matrix(rnorm(n = NDirections * p), ncol = p)
+      if (p == 1) {
+        directions <- matrix(c(-1,1), ncol = 1)
+      }
       directions <- directions / sqrt(rowSums(directions ^ 2))
   } else{
     directions <- data.matrix(directions)
@@ -144,7 +144,7 @@ depthContour <- function(x, alpha=NULL, type="hdepth", directions=NULL,
     if (p == 2) {
       Result <- CalcBivHContour(x, alpha)
     }
-    if (p > 2) {
+    if (p != 2) {
       Result <- CalcHContour(x, alpha, directions, options)
     }
   }
@@ -241,14 +241,13 @@ CalcOneHalfContourIntersect <- function(x, Center, alpha, Directions, options) {
 
   NObs <- nrow(x)
   NVar <- ncol(x)
-  distribution.data <- x
   NPoints <- nrow(Directions)
 
   #Initialise the depth to target
   target.depth <- floor(NObs * alpha) / NObs
 
   #Center the data
-  x <- sweep(x, MARGIN = 2, Center, FUN = "-")
+  distribution.data <- sweep(x, MARGIN = 2, Center, FUN = "-")
 
   #Find the upper bounds by projection onto the direction.
   #The multivariate depth of points on the contour is smaller

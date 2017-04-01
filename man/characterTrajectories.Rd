@@ -11,12 +11,12 @@ data(characterTrajectories)
 Three dimensional array. The first dimension represents time. The second dimension corresponds to the observation number. The third dimensions contains the X and Y coordinates.
 }
 \source{
+Bache K. and Lichman, M. (2013). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.
+}
+\references{
 Williams B.H., Toussaint M. and Storkey A.J. (2006) Extracting motion primitives from natural handwriting data. In ICANN, volume 2, pages 634--643, .
 
-Bache K. and Lichman, M. (2013). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.
-
 Hubert M., Rousseeuw P.J., Segaert P. (2016). Multivariate and functional classification using depth and distance. \emph{Advances in Data Analysis and Classification}
-
 }
 \examples{
 data(characterTrajectories)

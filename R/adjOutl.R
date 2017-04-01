@@ -1,4 +1,4 @@
-adjOutlyingness <- function(x, z=NULL, options = list()){
+adjOutl <- function(x, z = NULL, options = list()){
 
   ######
   # Check input.
@@ -147,7 +147,7 @@ adjOutlyingness <- function(x, z=NULL, options = list()){
                             dimension = sum(column.sd > 1e-14),
                             hyperplane = as.numeric(column.sd <= 1e-14),
                             inSubspace = NULL)
-    class(returned.result) <- c("mrfDepth", "adjOutlyingness")
+    class(returned.result) <- c("mrfDepth", "adjOutl")
     return(returned.result)
   }
   w1 <- try(svd(scaled.x / sqrt(n1 - 1)), silent = TRUE)
@@ -163,7 +163,7 @@ adjOutlyingness <- function(x, z=NULL, options = list()){
                             dimension = NULL,
                             hyperplane = NULL,
                             inSubspace = NULL)
-    class(returned.result) <- c("mrfDepth", "adjOutlyingness")
+    class(returned.result) <- c("mrfDepth", "adjOutl")
     return(returned.result)
   }
   if (min(w1$d) < tol) {
@@ -177,7 +177,7 @@ adjOutlyingness <- function(x, z=NULL, options = list()){
                             dimension = sum(w1$d > tol),
                             hyperplane = w1$v[, which(w1$d == min(w1$d))[1]],
                             inSubspace = NULL)
-    class(returned.result) <- c("mrfDepth", "adjOutlyingness")
+    class(returned.result) <- c("mrfDepth", "adjOutl")
     return(returned.result)
   }
 
@@ -219,7 +219,7 @@ adjOutlyingness <- function(x, z=NULL, options = list()){
                             dimension = NULL,
                             hyperplane = result[[11]],
                             inSubspace = as.logical(adj.outlyingness[1:n1]))
-    class(returned.result) <- c("mrfDepth", "adjOutlyingness")
+    class(returned.result) <- c("mrfDepth", "adjOutl")
     return(returned.result)
   }
 
@@ -237,6 +237,6 @@ adjOutlyingness <- function(x, z=NULL, options = list()){
                           dimension = NULL,
                           hyperplane = NULL,
                           inSubspace = NULL)
-  class(returned.result) <- c("mrfDepth", "adjOutlyingness")
+  class(returned.result) <- c("mrfDepth", "adjOutl")
   return(returned.result)
 }

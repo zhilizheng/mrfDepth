@@ -22,7 +22,7 @@ using Eigen::VectorXi;
 extern double mlmccN(const double z[],const int in,const int dr);
 
 extern "C"{
-	void medcouple(double* xi,int* n,double* mcaap,int* dr){
+	void medcoupleC(double* xi,int* n,double* mcaap,int* dr){
 		const int lin=*n,dryn=*dr;
 		*mcaap=mlmccN(xi,lin,dryn);		
 	}

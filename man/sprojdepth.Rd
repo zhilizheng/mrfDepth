@@ -15,8 +15,8 @@ sprojdepth(x, z = NULL, options = NULL)
              rowwise the points \eqn{z_i} for which to compute
              the projection depth. If \code{z} is not specified,
              it is set equal to \code{x}.}
-  \item{options}{ A list of options to pass to the underlying adjOutlyingness routine.
-                  See adjOutlyingness for the full list of options. }
+  \item{options}{ A list of options to pass to the underlying \code{adjOutl} routine.
+                  See \code{adjOutl} for the full list of options. }
 }
 \details{
  Skewness-adjusted projection depth is based on the adjusted
@@ -30,13 +30,13 @@ sprojdepth(x, z = NULL, options = NULL)
  dimension lower than \eqn{p}. If so, a warning is given, as well as the
  dimension of the subspace and a direction which is orthogonal to it.
  
- See \code{adjOutlyingness} for more details on the computation of the AO.
+ See \code{adjOutl} for more details on the computation of the AO.
  To visualize the depth of bivariate data one can apply the 
  \code{mrainbowplot} function. It plots the data colored according to 
  their depth. 
 
  The output values of this function are based on the output of the 
- \code{adjOutlyingness} function. More details can be found there. 
+ \code{adjOutl} function. More details can be found there. 
 }
 \value{
   A list with components: \cr
@@ -77,7 +77,7 @@ sprojdepth(x, z = NULL, options = NULL)
                     The other observations receive a value FALSE.}
 }
 \seealso{
-  \code{\link{adjOutlyingness}}, \code{\link{sprojmedian}}, \code{\link{mrainbowplot}}, \code{\link{outlyingness}}, \code{\link{projdepth}}, \code{\link{projmedian}}
+  \code{\link{adjOutl}}, \code{\link{sprojmedian}}, \code{\link{mrainbowplot}}, \code{\link{outlyingness}}, \code{\link{projdepth}}, \code{\link{projmedian}}
 }
 \references{
  Hubert M., Van der Veeken S. (2008). Outlier detection for skewed data. \emph{Journal of Chemometrics}, \bold{22}, 235--246.

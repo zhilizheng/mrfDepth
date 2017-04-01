@@ -155,7 +155,7 @@ CompHalfSpaceBagplot <- function(x, sizesubset) {
   storage.mode(pxpy) <- "double"
   storage.mode(PDepths) <- "double"
 
-  result <- .Fortran("bagplot",
+  result <- .Fortran("bagplotf",
                      as.integer(n),          #1 Number of points
                      as.double(x[, 1]),      #2 First variable of x
                      as.double(x[, 2]),      #3 Second variable of x
@@ -172,7 +172,7 @@ CompHalfSpaceBagplot <- function(x, sizesubset) {
                      datatyp2,               #14  datatyp2
                      pxpy,                   #15  Aid variable
                      as.integer(1),          #16  Flag indicating if half of the
-                                             #     points lie on a vertical line
+                                             #    points lie on a vertical line
                      as.integer(1),          #17 Flag to indicate whether
                                              #   dithering was performed
                      PDepths,                #18 Depths of points

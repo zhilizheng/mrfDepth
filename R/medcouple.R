@@ -35,7 +35,7 @@ medcouple <- function(x, do.reflect=NULL){
 
   for (i in 1:p) {
 
-    temp <- .C("medcouple",
+    temp <- .C("medcoupleC",
               as.double(x[, i]),     #1 Data vector
               as.integer(n),         #2 Number of observations
               as.double(0.0),        #3 Medcouple

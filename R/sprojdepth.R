@@ -93,7 +93,7 @@ sprojdepth <- function(x, z = NULL, options = NULL) {
   }
 
     original <- options(warn = 1)
-  result <- adjOutlyingness(x = x, z = z, options = options)
+  result <- adjOutl(x = x, z = z, options = options)
   options(warn = original$warn)
 
   if (!is.null(result$hyperplane)) {
@@ -118,7 +118,7 @@ sprojdepth <- function(x, z = NULL, options = NULL) {
                             dimension = NULL,
                             hyperplane = result[["hyperplane"]],
                             inSubspace = NULL)
-    class(returned.result) <- c("mrfDepth", "projdepth")
+    class(returned.result) <- c("mrfDepth", "sprojdepth")
     return(returned.result)
   }
 }

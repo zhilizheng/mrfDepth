@@ -19,6 +19,6 @@ Critical Reviews in Analytical Chemistry}, \bold{36}, 221--242.
 }
 \examples{
 data(octane)
-matplot(t(octane[,,1]))
+matplot(octane[,,1], type="l", lty=1, col = "black")
 }
 \keyword{datasets}

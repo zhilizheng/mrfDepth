@@ -2,14 +2,14 @@
 \alias{depthContour}
 \title{Depth contours of multivariate data}
 \description{
-Computes the vertices of depth contours of multivariate data (in at least two dimensions). The contours can be
+Computes the vertices of depth contours of multivariate data. The contours can be
 computed based on halfspace depth, projection depth or skewness-adjusted projection depth. To make the actual plot for bivariate data, the function \code{plotContours} needs to be called on the result of \code{depthContour}.
 }
 \usage{
 depthContour(x, alpha = NULL, type = "hdepth", directions = NULL, options = NULL)
 }
 \arguments{
-	\item{x}{An \eqn{n} by \eqn{p} data matrix with \eqn{p \ge 2}.}
+	\item{x}{An \eqn{n} by \eqn{p} data matrix.}
 	\item{alpha}{A vector containing the depth values of which the depth
 	             contours have to be computed.}
   \item{type}{The depth used in the computation of the contours.
@@ -28,7 +28,7 @@ depthContour(x, alpha = NULL, type = "hdepth", directions = NULL, options = NULL
                 }
 }
 \details{
-Depth contours of level \eqn{\alpha} are the boundaries of depth regions. Depth regions of level \eqn{alpha} are defined as regions in space containing the multivariate points whose depth value is at least \eqn{\alpha}.
+Depth contours of level \eqn{\alpha} (or \eqn{\alpha}-depth contours) are the boundaries of depth regions. Depth regions of level \eqn{alpha} are defined as regions in space containing the multivariate points whose depth value is at least \eqn{\alpha}.
 
 For bivariate data halfspace depth contours can be computed exactly following the algorithm in Ruts and Rousseeuw (1996). When the data are not in general position (i.e. when there is a line containing more than two observations) dithering is performed by adding random Gaussian noise to the data.
 

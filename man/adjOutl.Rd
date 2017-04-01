@@ -1,11 +1,11 @@
-\name{adjOutlyingness}
-\alias{adjOutlyingness}
+\name{adjOutl}
+\alias{adjOutl}
 \title{Adjusted outlyingness of points relative to a dataset}
 \description{
 Computes the skew-adjusted outlyingness of \eqn{p}-dimensional points \code{z} relative to a \eqn{p}-dimensional dataset \code{x}. For each multivariate point \eqn{z_i}, its adjusted outlyingness relative to \code{x} is defined as its maximal univariate adjusted outlyingness measured over all directions. To obtain the univariate adjusted outlyingness in the direction \eqn{v}, the dataset \code{x} is projected on \eqn{v}, and the robustly skew-adjusted standardized distance of \eqn{v'z_i} to the median of the projected data points \code{x}\eqn{v} is computed.
 }
 \usage{
-adjOutlyingness(x, z = NULL, options = list())
+adjOutl(x, z = NULL, options = list())
 }
 \arguments{
     \item{x}{An \eqn{n} by \eqn{p} data matrix.}
@@ -99,7 +99,7 @@ This function extends the \code{adjOutlyingness} function in the package \code{r
 # in red.
 data("geological")
 BivData <- geological[c("MnO","MgO")]
-Result <- adjOutlyingness(x = BivData)
+Result <- adjOutl(x = BivData)
 IndOutliers <- which(!Result$flagX)
 plot(BivData)
 points(BivData[IndOutliers,], col = "red")
@@ -107,21 +107,21 @@ points(BivData[IndOutliers,], col = "red")
 # The number of directions may be specified through
 # the option list. The resulting adjusted outlyingness
 # is monotone increasing in the number of directions.
-Result1 <- adjOutlyingness(x = BivData,
-                          options = list(ndir = 50)
-                          )
-Result2 <- adjOutlyingness(x = BivData,
-                          options = list(ndir = 100)
-                          )
+Result1 <- adjOutl(x = BivData,
+                   options = list(ndir = 50)
+                   )
+Result2 <- adjOutl(x = BivData,
+                   options = list(ndir = 100)
+                   )
 which(Result2$outlyingnessX - Result1$outlyingnessX < 0)
 # This is however not the case when the seed is changed
-Result1 <- adjOutlyingness(x = BivData,
-                          options = list(ndir = 50)
-                          )
-Result2 <- adjOutlyingness(x = BivData,
-                          options = list(ndir = 100,
-                                         seed = 950)
-                          )
+Result1 <- adjOutl(x = BivData,
+                   options = list(ndir = 50)
+                   )
+Result2 <- adjOutl(x = BivData,
+                   options = list(ndir = 100,
+                                  seed = 950)
+                   )
 plot(Result2$outlyingnessX - Result1$outlyingnessX,
      xlab = "Index", ylab = "Difference in AO")
 
@@ -132,20 +132,20 @@ plot(Result2$outlyingnessX - Result1$outlyingnessX,
 # as n becomes larger.
 data("bloodfat")
 BivData <- bloodfat[1:100,] # Consider a small toy example.
-Result <- adjOutlyingness(x = BivData,
-                          options = list(type = "Rotation",
-                                        ndir = "all")
-                         )
+Result <- adjOutl(x = BivData,
+                  options = list(type = "Rotation",
+                                 ndir = "all")
+                  )
 IndOutliers <- which(!Result$flagX)
 plot(BivData)
 points(BivData[IndOutliers,], col = "red")
 
 # Alternatively one may consider randomly generated directions.
 data("bloodfat")
-Result = adjOutlyingness(x = bloodfat,
-                         options = list(type = "Shift",
-                                        ndir = 1000)
-                        )
+Result = adjOutl(x = bloodfat,
+                 options = list(type = "Shift",
+                                ndir = 1000)
+                 )
 IndOutliers <- which(!Result$flagX)
 plot(bloodfat)
 points(bloodfat[IndOutliers,], col = "red")

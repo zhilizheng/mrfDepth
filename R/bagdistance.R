@@ -137,6 +137,18 @@ bagdistance <- function(x, z = NULL, options = list()){
     lower.bound <- min(x[Ind])
     upper.bound <- max(x[Ind])
 
+    if (abs(lower.bound - center) < tol | abs(upper.bound - center) < tol) {
+      warning("The bag has length zero.")
+      returned.result <- list(bagdistance = NULL,
+                              cutoff = NULL,
+                              flag = NULL,
+                              converged = NULL,
+                              dimension = NULL,
+                              hyperplane = NULL)
+      class(returned.result) <- c("mrfDepth", "bagdistance")
+      return(returned.result)
+    }
+
     Ind <- which(z <= center)
     distances[Ind] <- abs(z[Ind] - center) / abs(lower.bound - center)
 
@@ -313,7 +325,6 @@ bagdistance <- function(x, z = NULL, options = list()){
     return(returned.result)
   }
   else{
-
     # Center all data
     data.distribution <- sweep(x, MARGIN = 2, center, FUN = "-")
     data.to.calc.dist <- sweep(z, MARGIN = 2, center, FUN = "-")

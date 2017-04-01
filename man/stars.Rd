@@ -20,15 +20,14 @@ Following variables are included:
   }
 }
 \source{
-
 Humphreys R.M. (1978). Studies of luminous stars in nearby galaxies. I. Supergiants and O stars in the milky way.  \emph{Astrophysics Journal Supplementary Series}, \bold{38}, 309--350.
 
+Hand D.J., Daly F., Lunn A., McConway A. (1994). A Handbook of Small Data Sets. \emph{Londen: Chapman and Hall},  dataset 367.
+}
+\references{
 Vansima F., De Greve J.P. (1982). Close binary systems before and after mass transfer. \emph{Astrophysics and Space Science}, \bold{87}, 377--401. 
 
-Hand D.J., Daly F., Lunn A., McConway A. (1994). A Handbook of Small Data Sets. \emph{Londen: Chapman and Hall},  dataset 367.
-
 Rousseeuw P.J., Leroy A. (1987). Robust Regression and Outlier Detection. \emph{New York: Wiley}. 
-
 }
 \examples{
 data(stars)

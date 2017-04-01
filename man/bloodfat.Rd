@@ -18,10 +18,10 @@ A dataframe conraining following variables:
  }
 }
 \source{
-Scott D.W., Gotto A.M., Cole J.S., Gorry G.A. (1978). Plasma lipids as collateral risk factors in coronary artery disease: a study of 371 males with chest pain.  \emph{Journal of Chronic Diseases}, \bold{31}, 337--345.
-
 Hand D.J., Daly F., Lunn A., McConway A. (1994). A Handbook of Small Data Sets. \emph{Londen: Chapman and Hall}, dataset 277.
-
+}
+\references{
+Scott D.W., Gotto A.M., Cole J.S., Gorry G.A. (1978). Plasma lipids as collateral risk factors in coronary artery disease: a study of 371 males with chest pain.  \emph{Journal of Chronic Diseases}, \bold{31}, 337--345.
 }
 \examples{
 data(bloodfat)

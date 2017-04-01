@@ -1,18 +1,19 @@
 importFrom("stats",
            "complete.cases", "dbinom", "mad", "median", "qchisq", "quantile",
-           "rnorm")
+           "rnorm", "qnorm")
 importFrom("grDevices",
            "chull", "extendrange", "rgb")
 
-importFrom("geometry",convhulln)
-importFrom("matrixStats", rowMaxs, rowMins, rowSds)
+importFrom("abind", abind)
+importFrom("geometry", convhulln)
 importFrom("grid", grid.newpage, grid.layout, viewport, pushViewport)
-importFrom("reshape2",melt)
+importFrom("matrixStats", rowMaxs, rowMins, rowSds)
+importFrom("reshape2", melt)
 import("ggplot2")
 
-useDynLib("mrfDepth")
+useDynLib("mrfDepth", .registration = TRUE)
 
-export(adjOutlyingness)
+export(adjOutl)
 export(sprojdepth)
 export(sprojmedian)
 export(outlyingness)
@@ -26,14 +27,23 @@ export(medcouple)
 export(symtest)
 export(compBagplot)
 export(bagdistance)
+export(distSpace)
 
 export(rdepth)
 #export(catline)
 export(rdepthmedian)
 export(cmltest)
 
+export(mfd)
+export(mfdmedian)
+export(fOutl)
 
 export(mrainbowplot)
 export(plotContours)
 export(bagplot)
+export(fom)
+#export(centralregion)
+#export(dispersioncurve)
+#export(fheatmap)
+#export(scalecurve)
 

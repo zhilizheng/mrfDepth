@@ -19,6 +19,11 @@ data(cardata90)
 
 Chambers J.M., Hastie T.J. (1993). Statistical Models in S. \emph{Londen: Chapman and Hall}, 46--47.
 }
+\references{
+Rousseeuw, P.J., Ruts I, and Tukey J.W. (1999).
+The bagplot: a bivariate boxplot.
+\emph{The American Statistician} \bold{53}(4), 382--387.
+}
 \examples{
 data(cardata90)
 plot(cardata90)
