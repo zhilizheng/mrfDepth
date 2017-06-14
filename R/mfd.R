@@ -53,11 +53,11 @@ mfd <- function(x,
 
   #Check type
   Indtype <- match(type, c("hdepth", "projdepth",
-                           "sprojdepth", "sdepth"))[1]
+                           "sprojdepth", "dprojdepth", "sdepth"))[1]
   if (is.na(Indtype)) {
-    stop("type should be one of hdepth, projdepth , sprojdepth or sdepth.")
+    stop("type should be one of hdepth, projdepth , sprojdepth, dprojdepth or sdepth.")
   }
-  if (Indtype == 4 && p1 > 2) {
+  if (Indtype == 5 && p1 > 2) {
     stop("sdepth depth only implemented for p<=2.")
   }
 
@@ -195,6 +195,18 @@ mfd <- function(x,
         exactfit <- 1
       }
     }
+    else if (type == "dprojdepth") {
+      temp <- dprojdepth(x = xTimePoint, z = zTimePoint, options = depthOptions)
+      if (!is.null(temp$depthZ)) {
+        depthsTimeX[,j] <- temp$depthX
+        depthsTimeZ[,j] <- temp$depthZ
+        locOutlX[,j] <- as.numeric(!temp$flagX)
+        locOutlZ[,j] <- as.numeric(!temp$flagZ)
+      }
+      else{
+        exactfit <- 1
+      }
+    }
     else{
       temp <- sdepth(x = xTimePoint, z = zTimePoint)
       if (!is.null(temp$depth)) {
@@ -274,28 +286,28 @@ mfd <- function(x,
     warning(paste("Exact fits were detected for certain time points.",
                   "Their weights will be set to zero.",
                   "Check the returned results"),
-            call = FALSE)
+            call. = FALSE)
     Result$IndFlagExactFit <- warningIndFit
   }
   if (warningFlagBag == 1) {
     warning(paste("The bagplot could not be computed at all time points.",
                   "Their weights will be set to zero.",
                   "Check the returned results"),
-            call = FALSE)
+            call. = FALSE)
     Result$IndFlagBag <- warningIndBag
   }
   if (warningFlagIso == 1) {
     warning(paste("The isohdepth contours could not be computed at all", 
                   "time points. Their weights will be set to zero.",
                   "Check the returned results"),
-            call = FALSE)
+            call. = FALSE)
     Result$IndFlagIso <- warningIndIso
   }
   if (warningFlagAlpha  ==  1) {
     warning(paste("The specified alpha is too large at all time points.",
                   "Their weights will be set to zero.",
                   "Check the returned results"),
-            call = FALSE)
+            call. = FALSE)
     Result$IndFlagAlpha <- warningIndAlpha
   }
 

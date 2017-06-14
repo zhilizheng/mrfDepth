@@ -26,15 +26,15 @@ mfdmedian <- function(x,
 
   #Check type
   Indtype <- match(type, c("hdepth", "projdepth",
-                           "sprojdepth", "simplicial"))[1]
+                           "sprojdepth", "dprojdepth", "simplicial"))[1]
   if (is.na(Indtype)) {
-    stop("type should be one of hdepth, projDepth , spDepth or simplicial.")
+    stop("type should be one of hdepth, projdepth , sprojdepth, dprojdepth or simplicial.")
   }
-  if (Indtype == 4 & p1 > 2) {
+  if (Indtype == 5 & p1 > 2) {
     stop("Simplicial depth only implemented for p<=2.")
   }
 
-  #Check the crossDepthds
+  #Check the crossDepths
   if (!is.null(crossDepthsX)) {
     if (!is.matrix(crossDepthsX)) {
       stop("crossDepthsX should be a matrix")
@@ -70,8 +70,8 @@ mfdmedian <- function(x,
   if (is.na(indCenter)) {
     stop("centerOption should be one of maxdepth, gravity or Huber.")
   }
-  if (indCenter == 3 && Indtype == 3) {
-    stop("Huber estimate not available for sprojmedian.")
+  if (indCenter == 3 && (Indtype == 3 || Indtype == 4)) {
+    stop("Huber estimate not available for sprojmedian and dprojmedian.")
   }
 
 
@@ -144,6 +144,23 @@ mfdmedian <- function(x,
         exactfit <- 1
       }
     }
+    else if (type == "dprojdepth") {
+      if (is.null(crossDepthsX)) {
+        temp <- dprojmedian(x = xTimePoint, options = depthOptions)
+      } else{
+        temp <- dprojmedian(x = xTimePoint,
+                            dprojection.depths =  crossDepthsX[,j])
+      }
+      if (!is.null(temp$max)) {
+        if (centerOption == 1) {
+          MFDmedian[j,] <- temp$max
+        }
+        else MFDmedian[j,] <- temp$gravity
+      }
+      else{
+        exactfit <- 1
+      }
+    }
     else{
       temp <- sdepth(x = xTimePoint)
       if (!is.null(temp$depth)) {
@@ -171,7 +188,7 @@ mfdmedian <- function(x,
   if (warningFlagFit == 1) {
     warning(paste("Exact fits were detected for certain time points.",
                   "Their weights will be set to zero.",
-                  " Check the returned results", call = FALSE)
+                  " Check the returned results", call. = FALSE)
             )
     Result$IndFlagExactFit <- warningIndFit
   }
