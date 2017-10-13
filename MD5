@@ -1,5 +1,5 @@
-1c498103696be6afe2d5eab6613c8b5e *DESCRIPTION
-dd0ec7a9c71343e7d081759fc9812e40 *NAMESPACE
+8c8e9e3ba5633615235ec197df8995bd *DESCRIPTION
+ed175966a8965997266a5a88d5d1b830 *NAMESPACE
 120e1018706388a1c17f082d00331cf1 *R/Misc.R
 628883b492aa21f9e712588a61436989 *R/adjOutl.R
 064ec682d1227990c6b51cc87c7ea088 *R/bagdistance.R
@@ -38,7 +38,7 @@ a20f83310a48f224ad8b35a0e1778a3a *data/bloodfat.RData
 a49d3ae1509d58266d1ee7fbc2e775ee *data/glass.RData
 88786efb7fdd752fc2ac1690656e0349 *data/octane.RData
 347b2e97c285ce0a8e71aaeccdb7721d *data/stars.RData
-9d7d404a6408951d5e8ae258b5472a43 *inst/NEWS.Rd
+14d8006c68191682287ff17d3c532b11 *inst/NEWS.Rd
 2954f7b28a3da320170f94f4c55bdcef *man/adjOutl.Rd
 a83e1bb6a461004c8d9934c7bc6845a1 *man/bagdistance.Rd
 1c90146932431c4207a4e837211faf48 *man/bagplot.Rd
@@ -57,7 +57,7 @@ d0162a5492fe4824c99be9cc782ebd92 *man/fHeatMap.Rd
 fb89fb62832a7093e6c23f4dbbd379e3 *man/fom.Rd
 ceaca2b0d291105e8a7f1e7f5997c46a *man/geological.Rd
 f21f7dad8f673efd715c45bc15e76caa *man/glass.Rd
-61cda26490bd03244f46b793d4760c9e *man/hdepth.Rd
+d085847eeb92455076434f412adcdd37 *man/hdepth.Rd
 9a17a4b9bf923169446d156bbc58e038 *man/hdepthmedian.Rd
 4987c07103bf2f5f68a1121511588e0c *man/medcouple.Rd
 d2a6858603dfa1353e4c7f63d3ad379d *man/mfd.Rd
@@ -85,8 +85,8 @@ fc607976fb93d719f368a23fc74c4080 *src/HalfSpaceDepthDeepestLoc.f
 719dacbf047f4fd8440f9fe774c9da1d *src/HalfSpaceDepthND.f
 2280a178e36199589eccd31424d23d6b *src/HalfspaceDepth3D.f
 9f15802f842740f31f970e0fc2db1757 *src/LinAlg.f
-899d744edf9e89873dcf8554b0930111 *src/Makevars
-899d744edf9e89873dcf8554b0930111 *src/Makevars.win
+22560508d6fc28fff53c811abd196a9f *src/Makevars
+53dece5c8a0f227ba285fa9fb3d69b13 *src/Makevars.win
 05d4eceafe7d76dfd508906af734d833 *src/Outlyingness.cpp
 5381c2de7891cf79ea5857edf2e531e1 *src/Random.f
 935bf812575cd7af660ab76d71bfd01b *src/RegresDepth3D.f
@@ -94,8 +94,8 @@ bd8463c96d4fdbbaed8ab9d01e7e8c5e *src/RegresDepth4D.f
 d9c842ad9eb29d7234d044a51547d1ec *src/RegresDepthDeepest.f
 014775685dd8998d68de6ecebde53bfe *src/RegresDepthNd.f
 e5c9d7052325cb7a6f17ffe9169897ac *src/auxyl.cpp
-cfd13d4d0a3dbbbce378f0dbcc821b72 *src/dirOutl.cpp
-6810c78e89a2266b720d2ecef6e3b5a1 *src/dirOutl.h
+b830f33bad05c203e916801de0d20d36 *src/dirOutl.cpp
+297fbb582f64d29d35d9ee81ff935497 *src/dirOutl.h
 d430a10f2c6ef40dce9148ad04383edb *src/hdepthND.cpp
 a619150cb9632c6b97a743e0f4b6ef94 *src/mc.cpp
 23144f819bfe1cb1d1e5c92d79296228 *src/medcouple.cpp
