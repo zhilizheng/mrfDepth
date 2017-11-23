@@ -1,5 +1,4 @@
 /* Reentrant random function from POSIX.1c.
-   Copyright (C) 1996, 1999, 2009 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
    Contributed by Ulrich Drepper <drepper@cygnus.com>, 1996.
 
@@ -52,10 +51,10 @@ double GetUniform(unsigned int *seed){
 double GetNormal(unsigned int *seed){	/* normal random variate generator, mean m, standard deviation s */
 /* boxmuller.c           Implements the Polar form of the Box-Muller
                          Transformation
-                      (c) Copyright 1994, Everett F. Carter Jr.
+                         Written by Everett F. Carter Jr., 1994
                           Permission is granted by the author to use
 			  this software for any application provided this
-			  copyright notice is preserved.
+			   notice is preserved.
 */
 	
 	double x1,x2,w,y1,m=0.0,s=1.0;

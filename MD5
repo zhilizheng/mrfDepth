@@ -1,6 +1,6 @@
-8c8e9e3ba5633615235ec197df8995bd *DESCRIPTION
+bb7c3b4013cd5e2e6d093487ec0fe295 *DESCRIPTION
 ed175966a8965997266a5a88d5d1b830 *NAMESPACE
-120e1018706388a1c17f082d00331cf1 *R/Misc.R
+1585d71876f3a1d586c7f71c1cee1c3f *R/Misc.R
 628883b492aa21f9e712588a61436989 *R/adjOutl.R
 064ec682d1227990c6b51cc87c7ea088 *R/bagdistance.R
 826a847dbcddf33c399e08a92f2d1860 *R/bagplot.R
@@ -38,7 +38,7 @@ a20f83310a48f224ad8b35a0e1778a3a *data/bloodfat.RData
 a49d3ae1509d58266d1ee7fbc2e775ee *data/glass.RData
 88786efb7fdd752fc2ac1690656e0349 *data/octane.RData
 347b2e97c285ce0a8e71aaeccdb7721d *data/stars.RData
-14d8006c68191682287ff17d3c532b11 *inst/NEWS.Rd
+57eb8dff0291be33560d7ad4cac19379 *inst/NEWS.Rd
 2954f7b28a3da320170f94f4c55bdcef *man/adjOutl.Rd
 a83e1bb6a461004c8d9934c7bc6845a1 *man/bagdistance.Rd
 1c90146932431c4207a4e837211faf48 *man/bagplot.Rd
@@ -100,4 +100,4 @@ d430a10f2c6ef40dce9148ad04383edb *src/hdepthND.cpp
 a619150cb9632c6b97a743e0f4b6ef94 *src/mc.cpp
 23144f819bfe1cb1d1e5c92d79296228 *src/medcouple.cpp
 4203bb1d40c91bf6ad9372480944bada *src/mrfDepth_init.c
-dad6833745039b587daa85c93e9e5f45 *src/randy.cpp
+ffeced2e4819a7be67cd329d8ce8367a *src/randy.cpp
