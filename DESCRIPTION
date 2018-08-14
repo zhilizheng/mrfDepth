@@ -18,8 +18,7 @@ Authors@R: c(
 Depends: R (>= 3.2.5), ggplot2
 Imports: abind, geometry, grid, matrixStats, reshape2,
 Suggests: robustbase
-LinkingTo: RcppEigen (>= 0.3.2.9.0), Rcpp (>= 0.12.6), RcppArmadillo
-        (>= 0.7.600.1.0)
+LinkingTo: RcppEigen (>= 0.3.2.9.0), Rcpp (>= 0.12.6), RcppArmadillo (>= 0.7.600.1.0)
 License: GPL (>= 2)
 LazyLoad: yes
 URL: https://github.com/PSegaert/mrfDepth
